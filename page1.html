@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body class="m-0 p-0 bg-blue-600 font-serif">
+
+    <h1 class="text-3xl text-white text-center mt-32">Step 1</h1>
+    <div class="w-1/2 mx-auto mt-7 bg-white shadow  rounded-lg p-10">
+
+        <form action="" class="text-xl">
+            <label for="name">What is your name?</label><br>
+            <input class="w-11/12 border-b border-black focus:outline-none" id="name" type="text"><br><br>
+
+            <label for="name">How old are you?</label><br>
+            <input class="w-11/12 border-b border-black focus:outline-none" id="age" type="number"><br><br>
+
+            <label for="name">Where do you live?</label><br>
+            <input class="w-11/12 border-b border-black focus:outline-none" id="address" type="text">
+        </form>
+
+        <button onclick="myFunction()" class="my-7 px-10 py-3 bg-red-600 rounded-full focus:outline-none"><a href="" class="p-2 text-white text-xl font-bold">Continue</a></button>
+        <p class="text-black" id="demo"></p>
+    </div>
+
+
+
+
+   
+
+<script>
+function myFunction() {
+  var txt;
+  if (confirm("Are you ready for stage 2!")) {
+    txt = "Alright, you are welcome!";
+  } else {
+    txt = "ooooh we are sorry!";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+
+
+  if (age > 17 && address === "Nigeria") {
+      alert("Congratulations you passed stage 1");
+  } else {
+      alert("Sorry, You are not qualified");
+  }
+
+</script>
+</body>
+</html>
