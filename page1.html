@@ -12,15 +12,15 @@
     <h1 class="text-3xl text-white text-center mt-32">Step 1</h1>
     <div class="w-1/2 mx-auto mt-7 bg-white shadow  rounded-lg p-10">
 
-        <form action="" class="text-xl">
+        <form action="/action_page.php" method="post" class="text-xl">
             <label for="name">What is your name?</label><br>
-            <input class="w-11/12 border-b border-black focus:outline-none" id="name" type="text"><br><br>
+            <input class="w-11/12 border-b border-black focus:outline-none" id="name" type="text" required><br><br>
 
             <label for="name">How old are you?</label><br>
-            <input class="w-11/12 border-b border-black focus:outline-none" id="age" type="number"><br><br>
+            <input class="w-11/12 border-b border-black focus:outline-none" id="age" type="number"  ><br><br>
 
             <label for="name">Where do you live?</label><br>
-            <input class="w-11/12 border-b border-black focus:outline-none" id="address" type="text">
+            <input class="w-11/12 border-b border-black focus:outline-none" id="address" type="text" required>
         </form>
 
         <button onclick="myFunction()" class="my-7 px-10 py-3 bg-red-600 rounded-full focus:outline-none"><a href="" class="p-2 text-white text-xl font-bold">Continue</a></button>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Form Validation & Custom Alerts</h1>
+    </header>
+
+
+       <form id="register">
+        <div class="input-group">
+         <label for="firstname">First Name: </label>
+         <input type="text" name="firstname" id="firstname" required />
+         <p>Please enter your first name</p>
+        </div>
+
+        <div class="input-group">
+           <label for="surname">Surname: </label>
+           <input type="text" name="surname" id="surname" required/>
+           <p>Please enter your Surname</p>
+        </div>
+
+        <div class="input-group">
+         <label for="email">Email: </label>
+         <input type="text" name="email" id="email" required/>
+         <p>Please enter your valid Email Address</p>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password: </label>
+          <input type="password" name="password" id="password" required/>
+          <p>Minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number</p>
+        </div>
+
+        <div class="input-group full">
+         <a href="flo.html"></a><input type="submit" value="Login" class="submit-btn" /></a>
+         <div class="clear"></div>
+        </div>
+
+        <div class="errors">
+        </div>
+       </form>
+
+
+
+
+    <script>
+
+        const regForm = document.querySelector('form#register');
+        const errors_el = document.querySelector('form#register .errors');
+
+        regForm.addEventListener('submit', validateRegisterForm);
+
+        function validateRegisterForm (e) {
+        e.preventDefault();
+        
+        const firstname = document.querySelector('#register #firstname');
+        const surname = document.querySelector('#register #surname');
+        const email = document.querySelector('#register #email');
+        const password = document.querySelector('#register #password');
+        
+        let errors = [];
+        
+        const email_reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const pass_reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        
+        if (firstname.value == "") {
+        errors.push({text: "first name", el: firstname});
+        }
+        
+        if (surname.value == "") {
+        errors.push({text: "surname", el: surname});
+        }
+        
+        if (email.value == "") {
+        errors.push({text: "email", el: email});
+        } else if (!email_reg.test(email.value)) {
+        errors.push({text: "email", el: email});
+        }
+        
+        if (password.value == "") {
+        errors.push({text: "password", el: password});
+        } else if (!pass_reg.test(password.value)) {
+        errors.push({text: "password", el: password});
+        }
+        
+        if (errors.length > 0) {
+        handle_errors(errors);
+        return false;
+        }
+        
+        window.location = "https://www.google.com/";;
+        return true;
+        }
+
+        function handle_errors(errs) {
+        let str = "You have errors with the following field(s); ";
+        
+        errs.map((er) => {
+        er.el.classList.add('error');
+        str += er.text + ", ";
+        });
+        
+        errs[0].el.focus();
+        
+        let error_el = document.createElement('div');
+        error_el.classList.add('error');
+        error_el.innerText = str;
+        
+        error_el.addEventListener('click', function () {
+        errors_el.removeChild(error_el);
+        });
+        
+        errors_el.appendChild(error_el);
+}
+
+    </script>
+
+
+</body>
+</html>
