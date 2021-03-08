@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d2e0cde1e0.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -34,6 +36,7 @@
         <div class="input-group">
           <label for="password">Password: </label>
           <input type="password" name="password" id="password" required/>
+          <i class="far fa-eye cursor-pointer -ml-7" id="togglePassword"></i>
           <p>Minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number</p>
         </div>
 
@@ -49,6 +52,22 @@
 
 
 
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
     <script>
 
         const regForm = document.querySelector('form#register');
@@ -85,9 +104,12 @@
         
         if (password.value == "") {
         errors.push({text: "password", el: password});
+        } else if (password.length < 8) {
+        errors.push({text: "password too short", el: password});
         } else if (!pass_reg.test(password.value)) {
         errors.push({text: "password", el: password});
         }
+        
         
         if (errors.length > 0) {
         handle_errors(errors);
@@ -117,7 +139,20 @@
         });
         
         errors_el.appendChild(error_el);
-}
+        }
+
+
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+        });
+
 
     </script>
 
